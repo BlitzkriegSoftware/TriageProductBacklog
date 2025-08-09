@@ -1,15 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta charset="utf-8" ></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1" ></meta>
     <title>Product Triage Flow</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
-    />
+    ></link>
   </head>
   <body>
     <!-- Begin Content -->
@@ -75,7 +75,7 @@
                 </td>
               </tr>
               <tr>
-                <td>Triage & Support Team (TAST)</td>
+                <td>Triage &amp; Support Team (TAST)</td>
                 <td>
                   Does the initial triage, and also contributes to testing and
                   bug bashing
@@ -164,6 +164,10 @@
                 <td>This doesn't seem right</td>
               </tr>
               <tr>
+                <td>investigate</td>
+                <td>Team is investigating</td>
+              </tr>
+              <tr>
                 <td>question</td>
                 <td>Further information is requested</td>
               </tr>
@@ -208,7 +212,7 @@
 
       <h2>Review After</h2>
         <p>These labels are used so we can query items to be reviewed after some date</p>
-        <p>Label Format: <pre>yyyyWW</pre> where <pre>yyyy</pre> is the 4 digit year, and <pre>WW</pre> is the week number <pre>01-52</pre>.</p>
+        <p>Label Format: <pre>yyyyWW</pre> where <pre>yyyy</pre> is the 4 digit year, and <pre>WW</pre> is the week number <pre>01-52</pre>. </p>
         <p>For example <pre>202515</pre> The 15th week of 2025 runs from Monday, April 7, 2025, to Sunday, April 13, 2025.</p>
       </div>
     </div>
@@ -234,14 +238,38 @@
         </p>
         <ul>
           <li>
-            Item is <a href="#invalid">unintelligable</a>. The term
+            Item is <a href="#invalid">invalid/unintelligable</a>. The term
             "unintelligible" means unable to be understood or comprehended.
           </li>
-          <li></li>
-          <li></li>
+          <li>Item has <a href="#expired">expired</a></li>
+          <li>Item is a <a href="#bug">bug</a></li>
+          <li>Item is a <a href="#feature">feature request</a></li>
+          <li>Item is a <a href="#documentation">documentation</a> request/fix/need-more-examples</li>
         </ul>
 
         <h2 id="invalid">Invalid</h2>
+        <ol>
+            <li>Add label <pre>invalid</pre> label</li>
+            <li>Add a review-after label (I prefer 4 weeks from today) e.g., if it is 202532 now, then add <pre>202536</pre></li>
+            <li>Add a detailed review (politely) indicating what else is needed to address the issue</li>
+        </ol>
+
+        <h2 id="expired">Expired</h2>
+        <p>The review-after period has expired, it was assigned to community (CMTY), and no response has been received to the <pre>invalid</pre> label</p>
+        <ol>
+            <li>Remove all previous labels</li>
+            <li>Add <pre>wontfix</pre> label</li>
+            <li>Add a brief review that the issue is closed until more information is received</li>
+        </ol>
+
+        <h2 id="bug">Bug</h2>
+
+
+        <h2 id="feature">Feature Request</h2>
+
+        
+        <h2 id="documentation">Documentation Request</h2>
+
       </div>
     </div>
 
