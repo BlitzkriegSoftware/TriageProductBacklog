@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Triage Flow</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <!-- Begin Content -->
+
+    <!-- Overview -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#intro"
+      aria-expanded="false"
+      aria-controls="intro"
+    >
+      Overview
+    </button>
+    <div class="collapse" id="intro">
+      <div class="card card-body">
+        <h1>Overview: This process is generalized</h1>
+        <p>
+          This is a generic process, it can work with GitHub Issues, ADO, Jira,
+          Buginizer, etc.
+        </p>
+        <p>
+          The implementation details therefore vary, but the idea of a minumum
+          flow is the key here.
+        </p>
+        <p>
+          This flow is intended for projects that have external people "the
+          community" who provide bug reports and feature requests (see
+          #personas)
+        </p>
+      </div>
+    </div>
+
+    <!-- Personas -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#personas"
+      aria-expanded="false"
+      aria-controls="personas"
+    >
+      Personas
+    </button>
+    <div class="collapse" id="personas">
+      <div class="card card-body">
+        <h1>Personas: Whose who</h1>
+        <div class="table-responsive-sm">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Persona</th>
+                <th>Purpose</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Community (CMTY)</td>
+                <td>
+                  Provide feedback in the form of bug reports or feature
+                  requests
+                </td>
+              </tr>
+              <tr>
+                <td>Triage & Support Team (TAST)</td>
+                <td>
+                  Does the initial triage, and also contributes to testing and
+                  bug bashing
+                </td>
+              </tr>
+              <tr>
+                <td>Product Team: Bug Queue (PTBQ)</td>
+                <td>Product Team has two queues, this is one the bug queue</td>
+              </tr>
+              <tr>
+                <td>Product Team: Feature Request Queue (PTFR)</td>
+                <td>
+                  Product Team has two queues, this is the other the feature
+                  request queue
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- Labels -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#labels"
+      aria-expanded="false"
+      aria-controls="labels"
+    >
+      Labels
+    </button>
+    <div class="" id="labels">
+      <div class="card card-body">
+        <h1>Labels</h1>
+        <p>
+          <b>Labels</b> <i>AKA</i> <b>Tags</b> are used in some systems as a
+          surrogate for <b>state</b> or <b>status</b> as in ADO or Jira.
+        </p>
+        <p>
+          In many cases these can be used in combination. In any case, the idea
+          is to clearly indicate to someone examining an item, or quering for
+          items what comes next for the item.
+        </p>
+
+        <h2>Status Labels</h2>
+
+        <p>
+          In this guide, we're going to assume GitHub issues, and here are a
+          list of labels (some are the standard or default available ones) we'll
+          be using, others we're adding
+        </p>
+
+        <div class="table-responsive-sm">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Description</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>(blank) | new</td>
+                <td>To be triaged</td>
+              </tr>
+              <tr>
+                <td>bug</td>
+                <td>Something isn't working</td>
+              </tr>
+              <tr>
+                <td>documentation</td>
+                <td>Improvements or additions to documentation</td>
+              </tr>
+              <tr>
+                <td>duplicate</td>
+                <td>This issue or pull request already exists</td>
+              </tr>
+              <tr>
+                <td>enhancement</td>
+                <td>New feature or request</td>
+              </tr>
+              <tr>
+                <td>invalid</td>
+                <td>This doesn't seem right</td>
+              </tr>
+              <tr>
+                <td>question</td>
+                <td>Further information is requested</td>
+              </tr>
+              <tr>
+                <td>wontfix</td>
+                <td>This will not be worked on</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <h2>Team Labels</h2>
+        <p>This are in addition to the above labels</p>
+        <div class="table-responsive-sm">
+          <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Label</th>
+                <th>Team Name</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>(blank) | CMTY</td>
+                <td>Community</td>
+              </tr>
+              <tr>
+                <td>TAST</td>
+                <td>Triage and Light Bug Bashing Team</td>
+              </tr>
+              <tr>
+                <td>PTBQ</td>
+                <td>Product Team Bug Queue</td>
+              </tr>
+              <tr>
+                <td>PTFR</td>
+                <td>Product Team Feature Queue</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+      <h2>Review After</h2>
+        <p>These labels are used so we can query items to be reviewed after some date</p>
+        <p>Label Format: <pre>yyyyWW</pre> where <pre>yyyy</pre> is the 4 digit year, and <pre>WW</pre> is the week number <pre>01-52</pre>.</p>
+        <p>For example <pre>202515</pre> The 15th week of 2025 runs from Monday, April 7, 2025, to Sunday, April 13, 2025.</p>
+      </div>
+    </div>
+
+    <!-- Flows -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#flows"
+      aria-expanded="false"
+      aria-controls="flows"
+    >
+      Flows
+    </button>
+    <div class="" id="flows">
+      <div class="card card-body">
+        <h1>Start Here</h1>
+        <p>
+          For a specific item (in GitHub an Issue), evaluate the following and
+          select one of these next actions, this process is the same for new
+          items or items due for review
+        </p>
+        <ul>
+          <li>
+            Item is <a href="#invalid">unintelligable</a>. The term
+            "unintelligible" means unable to be understood or comprehended.
+          </li>
+          <li></li>
+          <li></li>
+        </ul>
+
+        <h2 id="invalid">Invalid</h2>
+      </div>
+    </div>
+
+    <!-- End of Content -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
+      integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/js/bootstrap.min.js"
+      integrity="sha384-7qAoOXltbVP82dhxHAUje59V5r2YsVfBafyUDxEdApLPmcdhBPg1DKg1ERo0BZlK"
+      crossorigin="anonymous"
+    ></script>
+    <script></script>
+  </body>
+</html>
