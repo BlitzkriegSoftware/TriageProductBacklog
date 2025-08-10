@@ -1,15 +1,22 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" ></meta>
-    <meta name="viewport" content="width=device-width, initial-scale=1" ></meta>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Product Triage Flow</title>
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
-    ></link>
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
   </head>
   <body>
     <!-- Begin Content -->
@@ -109,7 +116,7 @@
     >
       Labels
     </button>
-    <div class="" id="labels">
+    <div class="collapse" id="labels">
       <div class="card card-body">
         <h1>Labels</h1>
         <p>
@@ -160,6 +167,10 @@
                 <td>New feature or request</td>
               </tr>
               <tr>
+                <td>fixed</td>
+                <td>The item is resolved fixed!</td>
+              </tr>
+              <tr>
                 <td>invalid</td>
                 <td>This doesn't seem right</td>
               </tr>
@@ -170,6 +181,10 @@
               <tr>
                 <td>question</td>
                 <td>Further information is requested</td>
+              </tr>
+              <tr>
+                <td>testing</td>
+                <td>Issues with tests, missing tests, or other test cases</td>
               </tr>
               <tr>
                 <td>wontfix</td>
@@ -210,10 +225,95 @@
           </table>
         </div>
 
-      <h2>Review After</h2>
-        <p>These labels are used so we can query items to be reviewed after some date</p>
-        <p>Label Format: <pre>yyyyWW</pre> where <pre>yyyy</pre> is the 4 digit year, and <pre>WW</pre> is the week number <pre>01-52</pre>. </p>
-        <p>For example <pre>202515</pre> The 15th week of 2025 runs from Monday, April 7, 2025, to Sunday, April 13, 2025.</p>
+        <h2>Review After</h2>
+        <p>
+          These labels are used so we can query items to be reviewed after some
+          date
+        </p>
+        <p>
+          Label Format: <code>yyyyWW</code> where <code>yyyy</code> is the 4
+          digit year, and <code>WW</code> is the week number <code>01-52</code>.
+        </p>
+        <p>
+          For example <code>202515</code> The
+          <code>15th week of 2025</code> runs from
+          <code>Monday, April 7, 2025, to Sunday, April 13, 2025</code>.
+        </p>
+      </div>
+    </div>
+
+    <!-- Daily Processing -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#daily"
+      aria-expanded="false"
+      aria-controls="daily"
+    >
+      Daily Processing
+    </button>
+    <div class="collapse" id="daily">
+      <div class="card card-body">
+        <h1>Daily Processing</h1>
+        <p>This is the ideal flow</p>
+        <ol>
+          <li>
+            Start of every week, run a query for any
+            <code>review after</code> label that is from this or previous weeks,
+            and do the flow for all of those first
+          </li>
+          <li>Do initial triage new items every morning</li>
+          <li>Do <code>investigate</code> items</li>
+          <li>Do <code>fixed</code> items</li>
+          <li>Generate summary report weekly</li>
+        </ol>
+      </div>
+    </div>
+
+    <!-- Investigate -->
+    <button
+      class="btn btn-primary"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#investigate"
+      aria-expanded="false"
+      aria-controls="investigate"
+    >
+      Investigate Process
+    </button>
+    <div class="collapse" id="investigate">
+      <div class="card card-body">
+        <h1>Investigate Process</h1>
+        <p>This is the process to investigate bugs</p>
+        <ol>
+          <li>
+            Check to see if the bug is against a valid environment, e.g., OS,
+            runtime, tool-chain, etc. if not,
+            <i class="fa-regular fa-star" style="color: yellow"></i><b>stop</b>,
+            and reject bug as <code>wontfix</code> using the
+            <a href="#wontfix">Won't Fix Process</a>.
+          </li>
+          <li>
+            If the bug report does not indicate a specific release, test against
+            latest release.
+            <p>
+              Make sure to add a comment as to the EXACT release the
+              reproduction was attempted on in the bug comments
+            </p>
+          </li>
+          <li>
+            Likewise, add the exact Operating System and Version into the bug.
+            <p>
+              Your team should have a shell script to generate a set of standard
+              info that can be attached to the bug, including compiler versions,
+              etc.
+            </p>
+          </li>
+          <li></li>
+          <li>Pull a clean version of the code at the appropriate version</li>
+          <li></li>
+        </ol>
       </div>
     </div>
 
@@ -228,7 +328,7 @@
     >
       Flows
     </button>
-    <div class="" id="flows">
+    <div class="collapse" id="flows">
       <div class="card card-body">
         <h1>Start Here</h1>
         <p>
@@ -241,39 +341,207 @@
             Item is <a href="#invalid">invalid/unintelligable</a>. The term
             "unintelligible" means unable to be understood or comprehended.
           </li>
-          <li>Item has <a href="#expired">expired</a></li>
+          <li>
+            Item has <a href="#expired">expired</a> e.g., has popped-up as the
+            item came up on the query of <code>review after</code> items
+          </li>
           <li>Item is a <a href="#bug">bug</a></li>
           <li>Item is a <a href="#feature">feature request</a></li>
-          <li>Item is a <a href="#documentation">documentation</a> request/fix/need-more-examples</li>
+          <li>
+            Item is a
+            <a href="#documentation">documentation</a>
+            request/fix/need-more-examples
+          </li>
+          <li>Item is <a href="#tests">test</a> related</li>
+          <li>Item is <a href="#fixed">fixed</a></li>
         </ul>
 
         <h2 id="invalid">Invalid</h2>
         <ol>
-            <li>Add label <pre>invalid</pre> label</li>
-            <li>Add a review-after label (I prefer 4 weeks from today) e.g., if it is 202532 now, then add <pre>202536</pre></li>
-            <li>Add a detailed review (politely) indicating what else is needed to address the issue</li>
+          <li>Add label <code>invalid</code> label</li>
+          <li>
+            Add a review-after label (I prefer 4 weeks from today) e.g., if it
+            is <code>202532</code> now, then add <code>202536</code>
+          </li>
+          <li>
+            Add a detailed review (politely) indicating what else is needed to
+            address the issue
+          </li>
         </ol>
 
         <h2 id="expired">Expired</h2>
-        <p>The review-after period has expired, it was assigned to community (CMTY), and no response has been received to the <pre>invalid</pre> label</p>
+        <p>
+          The review-after period has expired, it was assigned to community
+          (CMTY), and no response has been received to the
+          <code>invalid</code> label
+        </p>
         <ol>
-            <li>Remove all previous labels</li>
-            <li>Add <pre>wontfix</pre> label</li>
-            <li>Add a brief review that the issue is closed until more information is received</li>
+          <li>Remove all previous labels</li>
+          <li>Add <code>wontfix</code> label</li>
+          <li>
+            Add a brief review that the issue is closed until more information
+            is received
+          </li>
+        </ol>
+        <p>Item is <b>CLOSED</b></p>
+        <p>
+          If this needs to be undone, follow the
+          <a href="#kickback">Kick-Back Process</a>
+        </p>
+
+        <h2 id="kickback">Product Team Kick Back</h2>
+        <p>
+          Occasionally, the Product Team (PT) will need to kick-back an item
+          from either the Bug or Feature Request Queue. The process is as
+          follows:
+        </p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>invalid</code> label</li>
+          <li>
+            The product team owes the TAST team good comments about what is
+            missing, so they know what to do next.
+          </li>
+          <li>Add a review-after label of this week for re-review</li>
         </ol>
 
         <h2 id="bug">Bug</h2>
+        <p>Bugs reports are processed like this:</p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>bug</code> label</li>
+          <li>Add a review-after label of this week for triage</li>
+          <li>Add any initial comments</li>
+        </ol>
 
+        <h2 id="norepro">Can't repoduce bug</h2>
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>CMTY</code></li>
+          <li>Add label <code>bug</code></li>
+          <li>
+            Add a review-after label (I prefer 4 weeks from today) e.g., if it
+            is <code>202532</code> now, then add <code>202536</code>
+          </li>
+          <li>
+            Add a detailed review (politely) indicating why we were unable to
+            reproduce the bug, and ask for more details
+          </li>
+        </ol>
+
+        <h2 id="wontfix">Won't Fix</h2>
+        <p>The bug is invalid, the feature is rejected, etc.</p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>wontfix</code> label</li>
+          <li>
+            Add a comment as to why. This is especially important for community
+            projects that this is both though and senstively written.
+          </li>
+        </ol>
+        <p>
+          If this needs to be undone, follow the
+          <a href="#kickback">Kick-Back Process</a>
+        </p>
+
+        <h2 id="goodrepro">Can repoduce bug</h2>
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>bug</code></li>
+          <li>
+            Add comments about how bug could be solved, and why it was assigned
+            to what team
+          </li>
+          <li>
+            If bug is trivial, assign to <code>TAST</code>, if it is more
+            complex, assign it to the <code>PTBQ</code>
+          </li>
+          <li>
+            Give it an initial review-after label of 2-8 weeks depending on
+            release schedule, and capacity (if in doubt use the default of 4
+            weeks)
+          </li>
+        </ol>
 
         <h2 id="feature">Feature Request</h2>
-
-        
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>feature</code> label</li>
+          <li>Give it a team label of <code>PTFR</code></li>
+          <li>
+            Give it an initial review-after label of 4-8 weeks depending on
+            release schedule, and capacity (if in doubt use the default of 4
+            weeks)
+          </li>
+          <li>Add comments and observations</li>
+        </ol>
+        <p>
+          The Product Team (PT) will work features along their own schedule.
+          They may kick back items
+        </p>
         <h2 id="documentation">Documentation Request</h2>
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>documentation</code> label</li>
+          <li>
+            Give it a team label of <code>TAST</code> in most cases, for complex
+            scenarios, may need to escallate by assigning it to the
+            <code>PTFR</code>
+          </li>
+          <li>
+            Give it an initial review-after label of 4-8 weeks depending on
+            release schedule, and capacity (if in doubt use the default of 4
+            weeks)
+          </li>
+          <li>Add comments and observations</li>
+        </ol>
 
+        <h2 id="tests">Tests</h2>
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>tests</code> label</li>
+          <li>
+            Give it a team label of <code>TAST</code> in most cases, for complex
+            scenarios, may need to escallate by assigning it to the
+            <code>PTFR</code>
+          </li>
+          <li>
+            Give it an initial review-after label of 4-8 weeks depending on
+            release schedule, and capacity (if in doubt use the default of 4
+            weeks)
+          </li>
+          <li>Add comments and observations</li>
+        </ol>
+
+        <h2 id="fixed">Fixed</h2>
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code>fixed</code></li>
+          <li>
+            Add a comment that item is fixed with a link to the release if it is
+            code, and to the page(s) if documentation
+          </li>
+        </ol>
+        <p>
+          If this needs to be undone, follow the
+          <a href="#kickback">Kick-Back Process</a>
+        </p>
       </div>
     </div>
 
     <!-- End of Content -->
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/fontawesome.min.js"
+      integrity="sha512-QPVPxxncZwuT317gBTFFlXTykloTFA4jnd5j/aFco+Nd/0eqFsp/zGdhjuwkRoiPMsjvkjHkp0DGRPBxF+d3Pw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
