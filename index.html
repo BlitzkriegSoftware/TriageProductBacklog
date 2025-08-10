@@ -22,6 +22,36 @@
         background-color: #ddd;
       }
 
+      .next-item {
+        color: green;
+        background-color: lightyellow;
+        font-style: italic;
+      }
+
+      .green-it {
+        color: green;
+      }
+
+      .to-top {
+        font-size: 0.8em;
+        color: #ccc;
+      }
+
+      .col-10-p {
+        width: 10%;
+      }
+
+      .col-30-p {
+        width: 30%;
+      }
+
+      .col-60-p {
+        width: 60%;
+      }
+      h3 {
+        color: #666;
+      }
+
       .roboto-body {
         font-family: "Roboto", sans-serif;
         font-optical-sizing: auto;
@@ -32,8 +62,8 @@
     </style>
   </head>
   <body class="container-fluid roboto-body">
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <a class="navbar-brand" href="#">Product Backlog Triage Guide</a>
+    <nav id="top" class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand green-it" href="#">Product Backlog Triage Guide</a>
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
           <a
@@ -83,6 +113,17 @@
           <a
             class="nav-link"
             data-bs-toggle="collapse"
+            data-bs-target="#triage"
+            aria-controls="triage"
+          >
+            Triage
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
             data-bs-target="#investigate"
             aria-controls="investigate"
           >
@@ -110,58 +151,68 @@
     -->
 
     <!-- Overview -->
-    <div class="collapse" id="intro">
+    <div class="" id="intro">
       <div class="card card-body">
         <h2>Overview: This process is generalized</h2>
-        <p>
-          This is a generic process, it can work with GitHub Issues, ADO, Jira,
-          Buginizer, etc.
-        </p>
-        <p>
-          The implementation details therefore vary, but the idea of a minumum
-          flow is the key here.
-        </p>
+
         <p>
           This flow is intended for projects that have external people "the
           community" who provide bug reports and feature requests (see
-          #personas)
+          #personas) and is targeted at GitHub issues, so if using something
+          else, so "tuning" may be required.
         </p>
+        <p>
+          The implementation details therefore vary, but the idea of a minumum
+          flow is the key here and is intended to give guidance to teams
+          maintaining open source projects with active communities, so the
+          frequency of the suggested activities may need to be adjusted based on
+          the number of issues per week.
+        </p>
+        <div class="to-top"><a href="#top">^top</a></div>
       </div>
     </div>
 
     <!-- Personas -->
-    <div class="collapse" id="personas">
+    <div class="" id="personas">
       <div class="card card-body">
         <h2>Personas: Whose who</h2>
         <div class="table-responsive-sm">
           <table class="table table-bordered">
             <thead>
               <tr>
-                <th>Persona</th>
-                <th>Purpose</th>
+                <th class="col-30-p">Persona</th>
+                <th class="col-10-p">Label</th>
+                <th class="col-60-p">Purpose</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>Community (<b>CMTY</b>)</td>
+                <td>Community</td>
+                <td>P-CMTY</td>
                 <td>
                   Provide feedback in the form of bug reports or feature
                   requests
                 </td>
               </tr>
               <tr>
-                <td>Triage &amp; Support Team (<b>TAST</b>)</td>
+                <td>Triage &amp; Support Team</td>
+                <td>P-TAST</td>
                 <td>
                   Does the initial triage, and also contributes to testing and
-                  bug bashing
+                  bug bashing in support of the main developers AKA the "Product
+                  Team" who maintain two queues of work, see below. The
+                  <b>TAST</b> in addition, to triage, does light housekeeping
+                  including small bugs, documentation fixes, more tests, etc.
                 </td>
               </tr>
               <tr>
-                <td>Product Team: Bug Queue (<b>PTBQ</b>)</td>
+                <td>Product Team: Bug Queue</td>
+                <td>P-PTBQ</td>
                 <td>Product Team has two queues, this is one the bug queue</td>
               </tr>
               <tr>
-                <td>Product Team: Feature Request Queue (<b>PTFR</b>)</td>
+                <td>Product Team: Feature Request Queue</td>
+                <td>P-PTFR</td>
                 <td>
                   Product Team has two queues, this is the other the feature
                   request queue
@@ -170,16 +221,18 @@
             </tbody>
           </table>
         </div>
+        <div class="to-top"><a href="#top">^top</a></div>
       </div>
     </div>
 
     <!-- Labels -->
-    <div class="collapse" id="labels">
+    <div class="" id="labels">
       <div class="card card-body">
         <h2>Labels</h2>
         <p>
           <b>Labels</b> <i>AKA</i> <b>Tags</b> are used in some systems as a
-          surrogate for <b>state</b> or <b>status</b> as in ADO or Jira.
+          surrogate for <b>state</b> or <b>status</b> or other fields in ADO,
+          Jira, etc.
         </p>
         <p>
           In many cases these can be used in combination. In any case, the idea
@@ -187,8 +240,13 @@
           items what comes next for the item.
         </p>
 
-        <h3>Status Labels</h3>
+        <h3>Team Labels</h3>
+        <p>
+          See
+          <a href="#personas">Persona</a> labels
+        </p>
 
+        <h3>Status Labels</h3>
         <p>
           In this guide, we're going to assume GitHub issues, and here are a
           list of labels (some are the standard or default available ones) we'll
@@ -205,7 +263,7 @@
             </thead>
             <tbody>
               <tr>
-                <td>(blank) | new</td>
+                <td>(no label) | new</td>
                 <td>To be triaged</td>
               </tr>
               <tr>
@@ -221,7 +279,7 @@
                 <td>This issue or pull request already exists</td>
               </tr>
               <tr>
-                <td>enhancement</td>
+                <td>feature</td>
                 <td>New feature or request</td>
               </tr>
               <tr>
@@ -237,12 +295,11 @@
                 <td>Team is investigating</td>
               </tr>
               <tr>
-                <td>question</td>
-                <td>Further information is requested</td>
-              </tr>
-              <tr>
-                <td>testing</td>
-                <td>Issues with tests, missing tests, or other test cases</td>
+                <td>tests</td>
+                <td>
+                  Issues with tests, missing tests, requests for more tests, or
+                  other test cases
+                </td>
               </tr>
               <tr>
                 <td>wontfix</td>
@@ -252,35 +309,67 @@
           </table>
         </div>
 
-        <h3>Team Labels</h3>
+        <h3>Priority / Severity Labels</h3>
+
         <p>
-          This are in addition to the above labels, and are the
-          <a href="#personas">Persona</a> abbreviations
+          These give some indication of the perceived urgency or value of the
+          proposed change
         </p>
         <div class="table-responsive-sm">
           <table class="table table-bordered">
             <thead>
               <tr>
                 <th>Label</th>
-                <th>Team Name</th>
+                <th>Rating</th>
+                <th>Typical Time to Fix</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>(blank) | CMTY</td>
-                <td>Community</td>
+                <td>1-Critical</td>
+                <td>
+                  This is urgent or the most severe, and must reflect that the
+                  system is profoundly broken unless fixed
+                </td>
+                <td>2-3 Days unless fix is a breaking change</td>
               </tr>
               <tr>
-                <td>TAST</td>
-                <td>Triage and Light Bug Bashing Team</td>
+                <td>2-High</td>
+                <td>
+                  Some major functionality is broken, on at least one of the
+                  supported platforms
+                </td>
+                <td>
+                  In the next release, unlesss security related, then ASAP.
+                </td>
               </tr>
               <tr>
-                <td>PTBQ</td>
-                <td>Product Team Bug Queue</td>
+                <td>3-Medium</td>
+                <td>
+                  This is the most severe any issue can be if there is a
+                  functional work-around, and indicates that something is broken
+                  and should be fixed. This is the highes level typically
+                  assigned to requests for documentation fixes or more tests.
+                  Unless the documentation is just wrong (or missing key
+                  elements).
+                </td>
+                <td>
+                  In the next release ideally, the one after that if not
+                  possible.
+                </td>
               </tr>
               <tr>
-                <td>PTFR</td>
-                <td>Product Team Feature Queue</td>
+                <td>4-Low</td>
+                <td>
+                  This is an annoyance which must be routinely worked around, or
+                  requires more code than needed.
+                </td>
+                <td>When possible</td>
+              </tr>
+              <tr>
+                <td>5-Useful</td>
+                <td>This is a <i>Nice to have</i> sometime in the future</td>
+                <td>Whenever</td>
               </tr>
             </tbody>
           </table>
@@ -301,11 +390,12 @@
           <code>15th week of 2025</code> runs from
           <code>Monday, April 7, 2025, to Sunday, April 13, 2025</code>.
         </p>
+        <div class="to-top"><a href="#top">^top</a></div>
       </div>
     </div>
 
     <!-- Routines -->
-    <div class="collapse" id="daily">
+    <div class="" id="daily">
       <div class="card card-body">
         <h2>Routines</h2>
         <p>This is the ideal flow</p>
@@ -346,11 +436,45 @@
             </ul>
           </li>
         </ol>
+        <div class="to-top"><a href="#top">^top</a></div>
+      </div>
+    </div>
+
+    <!-- Triage -->
+    <div class="" id="triage">
+      <div class="card card-body">
+        <h2>Triage Items</h2>
+        <p>
+          For a specific item (in GitHub an Issue), evaluate the following and
+          select one of these next actions, this process is the same for new
+          items or items due for review
+        </p>
+        <ul>
+          <li>
+            Item is <a href="#invalid">invalid/unintelligable</a>. The term
+            "unintelligible" means unable to be understood or comprehended.
+          </li>
+          <li>
+            Item has <a href="#expired">expired</a> e.g., has popped-up as the
+            item came up on the query of
+            <code class="status-label">review after</code> items
+          </li>
+          <li>Item is a <a href="#bug">bug</a></li>
+          <li>Item is a <a href="#feature">feature request</a></li>
+          <li>
+            Item is a
+            <a href="#documentation">documentation</a>
+            request/fix/need-more-examples
+          </li>
+          <li>Item is <a href="#tests">test</a> related</li>
+          <li>Item is <a href="#fixed">fixed</a></li>
+        </ul>
+        <div class="to-top"><a href="#top">^top</a></div>
       </div>
     </div>
 
     <!-- Investigate -->
-    <div class="collapse" id="investigate">
+    <div class="" id="investigate">
       <div class="card card-body">
         <h2>Investigation Process</h2>
         <p>This is the process to investigate bugs</p>
@@ -387,7 +511,8 @@
           <li>
             Create a branch named per the shop standard in the GIT Repo. If
             there is not a branch standard, use this format, with all characters
-            forced to lower case, and no <i>Punctuation</i> except underscore:
+            forced to lower case, and no <i>Punctuation</i> except
+            underscore:<br />
             <code>{team-label}/{username}/{issue#}/{remark}</code>.
             <br />Examples:
             <ul>
@@ -407,89 +532,17 @@
             </ul>
           </li>
         </ol>
+        <div class="to-top"><a href="#top">^top</a></div>
       </div>
     </div>
 
     <!-- Flows -->
-    <div class="collapse" id="flows">
+    <div class="" id="flows">
       <div class="card card-body">
-        <h2 id="triage">Triage Items</h2>
-        <p>
-          For a specific item (in GitHub an Issue), evaluate the following and
-          select one of these next actions, this process is the same for new
-          items or items due for review
-        </p>
-        <ul>
-          <li>
-            Item is <a href="#invalid">invalid/unintelligable</a>. The term
-            "unintelligible" means unable to be understood or comprehended.
-          </li>
-          <li>
-            Item has <a href="#expired">expired</a> e.g., has popped-up as the
-            item came up on the query of
-            <code class="status-label">review after</code> items
-          </li>
-          <li>Item is a <a href="#bug">bug</a></li>
-          <li>Item is a <a href="#feature">feature request</a></li>
-          <li>
-            Item is a
-            <a href="#documentation">documentation</a>
-            request/fix/need-more-examples
-          </li>
-          <li>Item is <a href="#tests">test</a> related</li>
-          <li>Item is <a href="#fixed">fixed</a></li>
-        </ul>
+        <h2>Flows (aka Procedures)</h2>
+        <p>In alphabetical order</p>
 
-        <h3 id="invalid">Invalid</h3>
-        <ol>
-          <li>Add label <code class="status-label">invalid</code> label</li>
-          <li>
-            Add a review-after label (I prefer 4 weeks from today) e.g., if it
-            is <code>202532</code> now, then add 4 weeks yielding
-            <code class="status-label">202536</code>
-          </li>
-          <li>
-            Add a detailed review (politely) indicating what else is needed to
-            address the issue
-          </li>
-        </ol>
-
-        <h3 id="expired">Expired</h3>
-        <p>
-          The review-after period has expired, it was assigned to community
-          (CMTY), and no response has been received to the
-          <code class="status-label">invalid</code> label
-        </p>
-        <ol>
-          <li>Remove all previous labels</li>
-          <li>Add <code class="status-label">wontfix</code> label</li>
-          <li>
-            Add a brief review that the issue is closed until more information
-            is received
-          </li>
-        </ol>
-        <p>Item is <b>CLOSED</b></p>
-        <p>
-          If this needs to be undone, follow the
-          <a href="#kickback">Kick-Back Process</a>
-        </p>
-
-        <h3 id="kickback">Product Team Kick Back</h3>
-        <p>
-          Occasionally, the Product Team (PT) will need to kick-back an item
-          from either the Bug or Feature Request Queue. The process is as
-          follows:
-        </p>
-        <ol>
-          <li>Remove all previous labels</li>
-          <li>Add label <code class="status-label">invalid</code> label</li>
-          <li>
-            The product team owes the TAST team good comments about what is
-            missing, so they know what to do next.
-          </li>
-          <li>Add a review-after label of this week for re-review</li>
-        </ol>
-
+        <!-- Procedure List -->
         <h3 id="bug">Bug</h3>
         <p>Bugs reports are processed like this:</p>
         <ol>
@@ -497,44 +550,11 @@
           <li>Add label <code class="status-label">bug</code> label</li>
           <li>Add a review-after label of this week for triage</li>
           <li>Add any initial comments</li>
+          <li><span class="next-item">(next item)</span></li>
         </ol>
-
-        <h3 id="norepro">Can't repoduce bug</h3>
-        <p></p>
-        <ol>
-          <li>Remove all previous labels</li>
-          <li>Add label <code class="status-label">CMTY</code></li>
-          <li>Add label <code class="status-label">bug</code></li>
-          <li>
-            Add a review-after label (I prefer 4 weeks from today) e.g., if it
-            is <code>202532</code> now, then add 4 weeks yielding
-            <code class="status-label">202536</code>
-          </li>
-          <li>
-            Add a detailed review (politely) indicating why we were unable to
-            reproduce the bug, and ask for more details
-          </li>
-          <li>Return to submitter</li>
-        </ol>
-
-        <h3 id="wontfix">Won't Fix</h3>
-        <p>The bug is invalid, the feature is rejected, etc.</p>
-        <ol>
-          <li>Remove all previous labels</li>
-          <li>Add label <code class="status-label">wontfix</code> label</li>
-          <li>
-            Add a comment as to why. This is especially important for community
-            projects that this is both though and senstively written.
-          </li>
-          <li>Return to submitter</li>
-        </ol>
-        <p>
-          If this needs to be undone, follow the
-          <a href="#kickback">Kick-Back Process</a>
-        </p>
 
         <h3 id="goodrepro">Can repoduce bug</h3>
-        <p></p>
+        <p>We can reproduce the reported bug.</p>
         <ol>
           <li>Remove all previous labels</li>
           <li>Add label <code class="status-label">bug</code></li>
@@ -552,27 +572,29 @@
             release schedule, and capacity (if in doubt use the default of 4
             weeks)
           </li>
+          <li><span class="next-item">(next item)</span></li>
         </ol>
 
-        <h3 id="feature">Feature Request</h3>
-        <p></p>
+        <h3 id="norepro">Can't repoduce bug</h3>
+        <p>We can't reproduce the reported bug. Oh, no.</p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code class="status-label">feature</code> label</li>
+          <li>Add label <code class="status-label">CMTY</code></li>
+          <li>Add label <code class="status-label">bug</code></li>
           <li>
-            Give it a team label of <code class="status-label">PTFR</code>
+            Add a review-after label (I prefer 4 weeks from today) e.g., if it
+            is <code>202532</code> now, then add 4 weeks yielding
+            <code class="status-label">202536</code>
           </li>
           <li>
-            Give it an initial review-after label of 4-8 weeks depending on
-            release schedule, and capacity (if in doubt use the default of 4
-            weeks)
+            Add a detailed review (politely) indicating why we were unable to
+            reproduce the bug, and ask for more details.
+            <br />
           </li>
-          <li>Add comments and observations</li>
+          <li>Return to submitter</li>
+          <li><span class="next-item">(next item)</span></li>
         </ol>
-        <p>
-          The Product Team (PT) will work features along their own schedule.
-          They may kick back items
-        </p>
+
         <h3 id="documentation">Documentation Request</h3>
         <p></p>
         <ol>
@@ -592,10 +614,108 @@
             weeks)
           </li>
           <li>Add comments and observations</li>
+          <li><span class="next-item">(next item)</span></li>
+        </ol>
+
+        <h3 id="expired">Expired</h3>
+        <p>
+          The review-after period has expired, it was assigned to community
+          (CMTY), and no response has been received to the
+          <code class="status-label">invalid</code> label
+        </p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add <code class="status-label">wontfix</code> label</li>
+          <li>
+            Add a brief review that the issue is closed until more information
+            is received
+          </li>
+          <li><span class="next-item">(next item)</span></li>
+        </ol>
+        <p>Item is <b>CLOSED</b></p>
+        <p>
+          If this needs to be undone, follow the
+          <a href="#kickback">Kick-Back Process</a>
+        </p>
+
+        <h3 id="feature">Feature Request</h3>
+        <p></p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code class="status-label">feature</code> label</li>
+          <li>
+            Give it a team label of <code class="status-label">PTFR</code>
+          </li>
+          <li>
+            Give it an initial review-after label of 4-8 weeks depending on
+            release schedule, and capacity (if in doubt use the default of 4
+            weeks)
+          </li>
+          <li>Add comments and observations</li>
+          <li><span class="next-item">(next item)</span></li>
+        </ol>
+        <p>
+          The Product Team (PT) will work features along their own schedule.
+          They may kick back items
+        </p>
+
+        <h3 id="fixed">Fixed</h3>
+        <p>Item is resolved with a good outcome.</p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code class="status-label">fixed</code></li>
+          <li>
+            Add a comment that item is fixed with a link to the release if it is
+            code, and to the page(s) if documentation
+          </li>
+          <li>
+            Delete related branches after the retention time (typically 90 days)
+          </li>
+          <li><span class="next-item">(next item)</span></li>
+        </ol>
+        <p>
+          If this needs to be undone, follow the
+          <a href="#kickback">Kick-Back Process</a>
+        </p>
+
+        <h3 id="invalid">Invalid</h3>
+        <p>The item is bad, incomprehensible, or ...</p>
+        <ol>
+          <li>Add label <code class="status-label">invalid</code> label</li>
+          <li>
+            Add a review-after label (I prefer 4 weeks from today) e.g., if it
+            is <code>202532</code> now, then add 4 weeks yielding
+            <code class="status-label">202536</code>
+          </li>
+          <li>
+            Add a detailed review (politely) indicating what else is needed to
+            address the issue
+          </li>
+          <li><span class="next-item">(next item)</span></li>
+        </ol>
+
+        <h3 id="kickback">Kick Back by Product Team</h3>
+        <p>
+          Occasionally, the Product Team (PT) will need to kick-back an item
+          from either the Bug or Feature Request Queue. The process is as
+          follows:
+        </p>
+        <ol>
+          <li>Remove all previous labels</li>
+          <li>Add label <code class="status-label">invalid</code> label</li>
+          <li>
+            The product team owes the TAST team good comments about what is
+            missing, so they know what to do next.
+          </li>
+          <li>Add a review-after label of this week for re-review</li>
+          <li><span class="next-item">(next item)</span></li>
         </ol>
 
         <h3 id="tests">Tests</h3>
-        <p></p>
+        <p>
+          This is the process for more tests requested. Tests are an idea way to
+          demo code.
+        </p>
         <ol>
           <li>Remove all previous labels</li>
           <li>Add label <code class="status-label">tests</code> label</li>
@@ -611,27 +731,41 @@
             weeks)
           </li>
           <li>Add comments and observations</li>
+          <li><span class="next-item">(next item)</span></li>
         </ol>
 
-        <h3 id="fixed">Fixed</h3>
-        <p></p>
+        <h3 id="wontfix">Won't Fix aka Rejected</h3>
+        <p>The bug is invalid, the feature is rejected, etc.</p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code class="status-label">fixed</code></li>
+          <li>Add label <code class="status-label">wontfix</code> label</li>
           <li>
-            Add a comment that item is fixed with a link to the release if it is
-            code, and to the page(s) if documentation
+            Add a comment as to why. <br />
+            <figure class="figure border">
+              <figcaption class="figure-caption">
+                This is especially important for community projects that this is
+                both though and senstively written.
+              </figcaption>
+            </figure>
           </li>
-          <li>
-            Delete related branches after the retention time (typically 90 days)
-          </li>
+          <li>Return to submitter</li>
+          <li><span class="next-item">(next item)</span></li>
         </ol>
         <p>
           If this needs to be undone, follow the
           <a href="#kickback">Kick-Back Process</a>
         </p>
+        <!-- End of Tasks -->
+        <div class="to-top"><a href="#top">^top</a></div>
       </div>
     </div>
+
+    <footer>
+      (c) 2025
+      <a href="mailto:stuart.t.williams@outlook.com">Stuart Williams</a> /
+      Blitzkrieg Software - All Rights Reserved -
+      <a href="./LICENSE">MIT License</a>
+    </footer>
 
     <!-- End of Content -->
     <script
