@@ -10,31 +10,109 @@
       integrity="sha384-LN+7fdVzj6u52u30Kp6M/trliBMCMKTyK833zpbD+pXdCLuTusPj697FH4R/5mcr"
       crossorigin="anonymous"
     />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap"
       rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
-      integrity="sha512-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbH2SyW27+ddLVCN+OMzQ=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
     />
+    <style>
+      .status-label {
+        color: blue !important;
+        background-color: #ddd;
+      }
+
+      .roboto-body {
+        font-family: "Roboto", sans-serif;
+        font-optical-sizing: auto;
+        font-weight: normal;
+        font-style: normal;
+        font-variation-settings: "wdth" 100;
+      }
+    </style>
   </head>
-  <body>
-    <!-- Begin Content -->
+  <body class="container-fluid roboto-body">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="#">Product Backlog Triage Guide</a>
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#intro"
+            aria-controls="intro"
+          >
+            Overview
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#personas"
+            aria-controls="personas"
+          >
+            Personas
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#labels"
+            aria-controls="labels"
+          >
+            Labels
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#daily"
+            aria-controls="daily"
+          >
+            Routines
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#investigate"
+            aria-controls="investigate"
+          >
+            Investigation Process
+          </a>
+        </li>
+
+        <li class="nav-item active">
+          <a
+            class="nav-link"
+            data-bs-toggle="collapse"
+            data-bs-target="#flows"
+            aria-controls="flows"
+          >
+            Flows
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!--
+    ===========
+    Sections    
+    ===========
+    -->
 
     <!-- Overview -->
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#intro"
-      aria-expanded="false"
-      aria-controls="intro"
-    >
-      Overview
-    </button>
     <div class="collapse" id="intro">
       <div class="card card-body">
-        <h1>Overview: This process is generalized</h1>
+        <h2>Overview: This process is generalized</h2>
         <p>
           This is a generic process, it can work with GitHub Issues, ADO, Jira,
           Buginizer, etc.
@@ -52,19 +130,9 @@
     </div>
 
     <!-- Personas -->
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#personas"
-      aria-expanded="false"
-      aria-controls="personas"
-    >
-      Personas
-    </button>
     <div class="collapse" id="personas">
       <div class="card card-body">
-        <h1>Personas: Whose who</h1>
+        <h2>Personas: Whose who</h2>
         <div class="table-responsive-sm">
           <table class="table table-bordered">
             <thead>
@@ -75,25 +143,25 @@
             </thead>
             <tbody>
               <tr>
-                <td>Community (CMTY)</td>
+                <td>Community (<b>CMTY</b>)</td>
                 <td>
                   Provide feedback in the form of bug reports or feature
                   requests
                 </td>
               </tr>
               <tr>
-                <td>Triage &amp; Support Team (TAST)</td>
+                <td>Triage &amp; Support Team (<b>TAST</b>)</td>
                 <td>
                   Does the initial triage, and also contributes to testing and
                   bug bashing
                 </td>
               </tr>
               <tr>
-                <td>Product Team: Bug Queue (PTBQ)</td>
+                <td>Product Team: Bug Queue (<b>PTBQ</b>)</td>
                 <td>Product Team has two queues, this is one the bug queue</td>
               </tr>
               <tr>
-                <td>Product Team: Feature Request Queue (PTFR)</td>
+                <td>Product Team: Feature Request Queue (<b>PTFR</b>)</td>
                 <td>
                   Product Team has two queues, this is the other the feature
                   request queue
@@ -106,19 +174,9 @@
     </div>
 
     <!-- Labels -->
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#labels"
-      aria-expanded="false"
-      aria-controls="labels"
-    >
-      Labels
-    </button>
     <div class="collapse" id="labels">
       <div class="card card-body">
-        <h1>Labels</h1>
+        <h2>Labels</h2>
         <p>
           <b>Labels</b> <i>AKA</i> <b>Tags</b> are used in some systems as a
           surrogate for <b>state</b> or <b>status</b> as in ADO or Jira.
@@ -129,7 +187,7 @@
           items what comes next for the item.
         </p>
 
-        <h2>Status Labels</h2>
+        <h3>Status Labels</h3>
 
         <p>
           In this guide, we're going to assume GitHub issues, and here are a
@@ -194,8 +252,11 @@
           </table>
         </div>
 
-        <h2>Team Labels</h2>
-        <p>This are in addition to the above labels</p>
+        <h3>Team Labels</h3>
+        <p>
+          This are in addition to the above labels, and are the
+          <a href="#personas">Persona</a> abbreviations
+        </p>
         <div class="table-responsive-sm">
           <table class="table table-bordered">
             <thead>
@@ -225,112 +286,134 @@
           </table>
         </div>
 
-        <h2>Review After</h2>
+        <h3>Review After</h3>
         <p>
           These labels are used so we can query items to be reviewed after some
           date
         </p>
         <p>
-          Label Format: <code>yyyyWW</code> where <code>yyyy</code> is the 4
-          digit year, and <code>WW</code> is the week number <code>01-52</code>.
+          Label Format: <code class="status-label">yyyyWW</code> where
+          <code>yyyy</code> is the 4 digit year, and <code>WW</code> is the week
+          number <code>01-52</code>.
         </p>
         <p>
-          For example <code>202515</code> The
+          For example <code class="status-label">202515</code> The
           <code>15th week of 2025</code> runs from
           <code>Monday, April 7, 2025, to Sunday, April 13, 2025</code>.
         </p>
       </div>
     </div>
 
-    <!-- Daily Processing -->
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#daily"
-      aria-expanded="false"
-      aria-controls="daily"
-    >
-      Daily Processing
-    </button>
+    <!-- Routines -->
     <div class="collapse" id="daily">
       <div class="card card-body">
-        <h1>Daily Processing</h1>
+        <h2>Routines</h2>
         <p>This is the ideal flow</p>
         <ol>
           <li>
             Start of every week, run a query for any
-            <code>review after</code> label that is from this or previous weeks,
-            and do the flow for all of those first
+            <code>review-after</code> label that is from this or previous weeks,
+            and do the <a href="#triage">triage</a> for all of those first
           </li>
-          <li>Do initial triage new items every morning</li>
-          <li>Do <code>investigate</code> items</li>
-          <li>Do <code>fixed</code> items</li>
-          <li>Generate summary report weekly</li>
+          <li>
+            Do initial <a href="#triage">triage</a> <b>new</b> items every
+            morning
+          </li>
+          <li>
+            Finish up
+            <code class="status-label"><a href="#">fixed</a></code> items
+          </li>
+          <li>
+            Do the
+            <code class="status-label"
+              ><a href="#investigate">investigation</a></code
+            >
+            of each bug item
+          </li>
+          <li>
+            Work on backlog assigned to <b>TAST</b> e.g.,
+            <a href="#bugs">bugs</a>,
+            <a href="#documentation">documentation</a>, etc. tasks
+          </li>
+          <li>
+            Weekly house keeping:
+            <ul>
+              <li>Do a daily report to stakeholders</li>
+              <li>Clean up expired branches</li>
+              <li>
+                Query for "lost" items and triage or schedule them for triage
+              </li>
+            </ul>
+          </li>
         </ol>
       </div>
     </div>
 
     <!-- Investigate -->
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#investigate"
-      aria-expanded="false"
-      aria-controls="investigate"
-    >
-      Investigate Process
-    </button>
     <div class="collapse" id="investigate">
       <div class="card card-body">
-        <h1>Investigate Process</h1>
+        <h2>Investigation Process</h2>
         <p>This is the process to investigate bugs</p>
         <ol>
           <li>
             Check to see if the bug is against a valid environment, e.g., OS,
             runtime, tool-chain, etc. if not,
-            <i class="fa-regular fa-star" style="color: yellow"></i><b>stop</b>,
-            and reject bug as <code>wontfix</code> using the
+            <span class="font-weight-bold text-danger">stop</span>, and reject
+            bug as <code class="status-label">wontfix</code> using the
             <a href="#wontfix">Won't Fix Process</a>.
           </li>
           <li>
             If the bug report does not indicate a specific release, test against
-            latest release.
-            <p>
-              Make sure to add a comment as to the EXACT release the
-              reproduction was attempted on in the bug comments
-            </p>
+            latest release.<br />
+            <figure class="figure border">
+              <figcaption class="figure-caption">
+                Make sure to add a comment as to the EXACT release the
+                reproduction was attempted on in the bug comments
+              </figcaption>
+            </figure>
           </li>
           <li>
-            Likewise, add the exact Operating System and Version into the bug.
-            <p>
-              Your team should have a shell script to generate a set of standard
-              info that can be attached to the bug, including compiler versions,
-              etc.
-            </p>
+            Likewise, add the exact Operating System and Version into the
+            bug.<br />
+            <figure class="figure border">
+              <figcaption class="figure-caption">
+                Your team should have a shell script to generate a set of
+                standard info that can be attached to the bug, including
+                compiler versions, etc.
+              </figcaption>
+            </figure>
           </li>
-          <li></li>
           <li>Pull a clean version of the code at the appropriate version</li>
-          <li></li>
+          <li>
+            Create a branch named per the shop standard in the GIT Repo. If
+            there is not a branch standard, use this format, with all characters
+            forced to lower case, and no <i>Punctuation</i> except underscore:
+            <code>{team-label}/{username}/{issue#}/{remark}</code>.
+            <br />Examples:
+            <ul>
+              <li><code>tast/jdev/323/nullex</code></li>
+              <li><code>tast/ptst/123/repro</code></li>
+              <li><code>ptfr/jader/631/add_magic_stuff</code></li>
+            </ul>
+          </li>
+          <li>Write at least one test that attempts to duplicate the bug!</li>
+          <li>Test</li>
+          <li>Update item comments</li>
+          <li>
+            Decide what to do next:
+            <ul>
+              <li><a href="#norepro">Can't repoduce bug</a></li>
+              <li><a href="#goodrepro">Can repoduce bug</a></li>
+            </ul>
+          </li>
         </ol>
       </div>
     </div>
 
     <!-- Flows -->
-    <button
-      class="btn btn-primary"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#flows"
-      aria-expanded="false"
-      aria-controls="flows"
-    >
-      Flows
-    </button>
     <div class="collapse" id="flows">
       <div class="card card-body">
-        <h1>Start Here</h1>
+        <h2 id="triage">Triage Items</h2>
         <p>
           For a specific item (in GitHub an Issue), evaluate the following and
           select one of these next actions, this process is the same for new
@@ -343,7 +426,8 @@
           </li>
           <li>
             Item has <a href="#expired">expired</a> e.g., has popped-up as the
-            item came up on the query of <code>review after</code> items
+            item came up on the query of
+            <code class="status-label">review after</code> items
           </li>
           <li>Item is a <a href="#bug">bug</a></li>
           <li>Item is a <a href="#feature">feature request</a></li>
@@ -356,12 +440,13 @@
           <li>Item is <a href="#fixed">fixed</a></li>
         </ul>
 
-        <h2 id="invalid">Invalid</h2>
+        <h3 id="invalid">Invalid</h3>
         <ol>
-          <li>Add label <code>invalid</code> label</li>
+          <li>Add label <code class="status-label">invalid</code> label</li>
           <li>
             Add a review-after label (I prefer 4 weeks from today) e.g., if it
-            is <code>202532</code> now, then add <code>202536</code>
+            is <code>202532</code> now, then add 4 weeks yielding
+            <code class="status-label">202536</code>
           </li>
           <li>
             Add a detailed review (politely) indicating what else is needed to
@@ -369,15 +454,15 @@
           </li>
         </ol>
 
-        <h2 id="expired">Expired</h2>
+        <h3 id="expired">Expired</h3>
         <p>
           The review-after period has expired, it was assigned to community
           (CMTY), and no response has been received to the
-          <code>invalid</code> label
+          <code class="status-label">invalid</code> label
         </p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add <code>wontfix</code> label</li>
+          <li>Add <code class="status-label">wontfix</code> label</li>
           <li>
             Add a brief review that the issue is closed until more information
             is received
@@ -389,7 +474,7 @@
           <a href="#kickback">Kick-Back Process</a>
         </p>
 
-        <h2 id="kickback">Product Team Kick Back</h2>
+        <h3 id="kickback">Product Team Kick Back</h3>
         <p>
           Occasionally, the Product Team (PT) will need to kick-back an item
           from either the Bug or Feature Request Queue. The process is as
@@ -397,7 +482,7 @@
         </p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>invalid</code> label</li>
+          <li>Add label <code class="status-label">invalid</code> label</li>
           <li>
             The product team owes the TAST team good comments about what is
             missing, so they know what to do next.
@@ -405,58 +490,62 @@
           <li>Add a review-after label of this week for re-review</li>
         </ol>
 
-        <h2 id="bug">Bug</h2>
+        <h3 id="bug">Bug</h3>
         <p>Bugs reports are processed like this:</p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>bug</code> label</li>
+          <li>Add label <code class="status-label">bug</code> label</li>
           <li>Add a review-after label of this week for triage</li>
           <li>Add any initial comments</li>
         </ol>
 
-        <h2 id="norepro">Can't repoduce bug</h2>
+        <h3 id="norepro">Can't repoduce bug</h3>
         <p></p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>CMTY</code></li>
-          <li>Add label <code>bug</code></li>
+          <li>Add label <code class="status-label">CMTY</code></li>
+          <li>Add label <code class="status-label">bug</code></li>
           <li>
             Add a review-after label (I prefer 4 weeks from today) e.g., if it
-            is <code>202532</code> now, then add <code>202536</code>
+            is <code>202532</code> now, then add 4 weeks yielding
+            <code class="status-label">202536</code>
           </li>
           <li>
             Add a detailed review (politely) indicating why we were unable to
             reproduce the bug, and ask for more details
           </li>
+          <li>Return to submitter</li>
         </ol>
 
-        <h2 id="wontfix">Won't Fix</h2>
+        <h3 id="wontfix">Won't Fix</h3>
         <p>The bug is invalid, the feature is rejected, etc.</p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>wontfix</code> label</li>
+          <li>Add label <code class="status-label">wontfix</code> label</li>
           <li>
             Add a comment as to why. This is especially important for community
             projects that this is both though and senstively written.
           </li>
+          <li>Return to submitter</li>
         </ol>
         <p>
           If this needs to be undone, follow the
           <a href="#kickback">Kick-Back Process</a>
         </p>
 
-        <h2 id="goodrepro">Can repoduce bug</h2>
+        <h3 id="goodrepro">Can repoduce bug</h3>
         <p></p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>bug</code></li>
+          <li>Add label <code class="status-label">bug</code></li>
           <li>
             Add comments about how bug could be solved, and why it was assigned
             to what team
           </li>
           <li>
-            If bug is trivial, assign to <code>TAST</code>, if it is more
-            complex, assign it to the <code>PTBQ</code>
+            If bug is trivial, assign to <code class="status-label">TAST</code>,
+            if it is more complex, assign it to the
+            <code class="status-label">PTBQ</code>
           </li>
           <li>
             Give it an initial review-after label of 2-8 weeks depending on
@@ -465,12 +554,14 @@
           </li>
         </ol>
 
-        <h2 id="feature">Feature Request</h2>
+        <h3 id="feature">Feature Request</h3>
         <p></p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>feature</code> label</li>
-          <li>Give it a team label of <code>PTFR</code></li>
+          <li>Add label <code class="status-label">feature</code> label</li>
+          <li>
+            Give it a team label of <code class="status-label">PTFR</code>
+          </li>
           <li>
             Give it an initial review-after label of 4-8 weeks depending on
             release schedule, and capacity (if in doubt use the default of 4
@@ -482,15 +573,18 @@
           The Product Team (PT) will work features along their own schedule.
           They may kick back items
         </p>
-        <h2 id="documentation">Documentation Request</h2>
+        <h3 id="documentation">Documentation Request</h3>
         <p></p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>documentation</code> label</li>
           <li>
-            Give it a team label of <code>TAST</code> in most cases, for complex
-            scenarios, may need to escallate by assigning it to the
-            <code>PTFR</code>
+            Add label <code class="status-label">documentation</code> label
+          </li>
+          <li>
+            Give it a team label of <code class="status-label">TAST</code> in
+            most cases, for complex scenarios, may need to escallate by
+            assigning it to the
+            <code class="status-label">PTFR</code>
           </li>
           <li>
             Give it an initial review-after label of 4-8 weeks depending on
@@ -500,15 +594,16 @@
           <li>Add comments and observations</li>
         </ol>
 
-        <h2 id="tests">Tests</h2>
+        <h3 id="tests">Tests</h3>
         <p></p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>tests</code> label</li>
+          <li>Add label <code class="status-label">tests</code> label</li>
           <li>
-            Give it a team label of <code>TAST</code> in most cases, for complex
-            scenarios, may need to escallate by assigning it to the
-            <code>PTFR</code>
+            Give it a team label of <code class="status-label">TAST</code> in
+            most cases, for complex scenarios, may need to escallate by
+            assigning it to the
+            <code class="status-label">PTFR</code>
           </li>
           <li>
             Give it an initial review-after label of 4-8 weeks depending on
@@ -518,14 +613,17 @@
           <li>Add comments and observations</li>
         </ol>
 
-        <h2 id="fixed">Fixed</h2>
+        <h3 id="fixed">Fixed</h3>
         <p></p>
         <ol>
           <li>Remove all previous labels</li>
-          <li>Add label <code>fixed</code></li>
+          <li>Add label <code class="status-label">fixed</code></li>
           <li>
             Add a comment that item is fixed with a link to the release if it is
             code, and to the page(s) if documentation
+          </li>
+          <li>
+            Delete related branches after the retention time (typically 90 days)
           </li>
         </ol>
         <p>
@@ -536,12 +634,6 @@
     </div>
 
     <!-- End of Content -->
-    <script
-      src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/js/fontawesome.min.js"
-      integrity="sha512-QPVPxxncZwuT317gBTFFlXTykloTFA4jnd5j/aFco+Nd/0eqFsp/zGdhjuwkRoiPMsjvkjHkp0DGRPBxF+d3Pw=="
-      crossorigin="anonymous"
-      referrerpolicy="no-referrer"
-    ></script>
     <script
       src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"
       integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r"
