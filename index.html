@@ -48,6 +48,11 @@
       .col-60-p {
         width: 60%;
       }
+
+      .card {
+        margin-top: 16px;
+      }
+
       h3 {
         color: #666;
       }
@@ -310,7 +315,6 @@
         </div>
 
         <h3>Priority / Severity Labels</h3>
-
         <p>
           These give some indication of the perceived urgency or value of the
           proposed change
@@ -421,8 +425,8 @@
             of each bug item
           </li>
           <li>
-            Work on backlog assigned to <b>TAST</b> e.g.,
-            <a href="#bugs">bugs</a>,
+            Work on <a href="#bashaway">backlog</a> assigned to
+            <b>TAST</b> e.g., <a href="#bugs">bugs</a>,
             <a href="#documentation">documentation</a>, etc. tasks
           </li>
           <li>
@@ -521,6 +525,7 @@
               <li><code>ptfr/jader/631/add_magic_stuff</code></li>
             </ul>
           </li>
+          <li>Switch to the branch</li>
           <li>Write at least one test that attempts to duplicate the bug!</li>
           <li>Test</li>
           <li>Update item comments</li>
@@ -533,6 +538,49 @@
           </li>
         </ol>
         <div class="to-top"><a href="#top">^top</a></div>
+      </div>
+    </div>
+
+    <!-- bash away -->
+    <div class="" id="bashaway">
+      <div class="card card-body">
+        <h2>Bash away at TAST backlog item</h2>
+        <p>
+          This is the process used to bash away at a TAST backlog item e.g.,
+          test(s), minor bug(s), documentation, etc.
+        </p>
+        <ol>
+          <li>
+            Pull a clean version of the code for the right branch (depends on
+            release process for GIT Repo)
+          </li>
+          <li>
+            Create a branch named per the shop standard in the GIT Repo. If
+            there is not a branch standard, use this format, with all characters
+            forced to lower case, and no <i>Punctuation</i> except
+            underscore:<br />
+            <code>{team-label}/{username}/{issue#}/{remark}</code>.
+            <br />Examples:
+            <ul>
+              <li><code>tast/jdev/323/docfix2</code></li>
+              <li><code>tast/ptst/123/more_tests</code></li>
+              <li><code>ptfr/jader/631/minor_bugs</code></li>
+            </ul>
+          </li>
+          <li>Switch to the branch</li>
+          <li>Do the work</li>
+          <li>
+            Make a Pull-Request into the correct branch (depends on release
+            strategy)
+          </li>
+          <li>Respond to reviews</li>
+          <li>Finalize work</li>
+          <li>
+            Update item with good comments and do
+            <a href="#fixed">fixed</a> process
+          </li>
+          <li><a href="#daily">Do next task</a></li>
+        </ol>
       </div>
     </div>
 
@@ -550,7 +598,9 @@
           <li>Add label <code class="status-label">bug</code> label</li>
           <li>Add a review-after label of this week for triage</li>
           <li>Add any initial comments</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
 
         <h3 id="goodrepro">Can repoduce bug</h3>
@@ -572,7 +622,9 @@
             release schedule, and capacity (if in doubt use the default of 4
             weeks)
           </li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
 
         <h3 id="norepro">Can't repoduce bug</h3>
@@ -592,7 +644,9 @@
             <br />
           </li>
           <li>Return to submitter</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
 
         <h3 id="documentation">Documentation Request</h3>
@@ -614,7 +668,9 @@
             weeks)
           </li>
           <li>Add comments and observations</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
 
         <h3 id="expired">Expired</h3>
@@ -630,7 +686,9 @@
             Add a brief review that the issue is closed until more information
             is received
           </li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
         <p>Item is <b>CLOSED</b></p>
         <p>
@@ -652,7 +710,9 @@
             weeks)
           </li>
           <li>Add comments and observations</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
         <p>
           The Product Team (PT) will work features along their own schedule.
@@ -671,7 +731,9 @@
           <li>
             Delete related branches after the retention time (typically 90 days)
           </li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
         <p>
           If this needs to be undone, follow the
@@ -708,7 +770,9 @@
             missing, so they know what to do next.
           </li>
           <li>Add a review-after label of this week for re-review</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
 
         <h3 id="tests">Tests</h3>
@@ -731,7 +795,9 @@
             weeks)
           </li>
           <li>Add comments and observations</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
 
         <h3 id="wontfix">Won't Fix aka Rejected</h3>
@@ -749,7 +815,9 @@
             </figure>
           </li>
           <li>Return to submitter</li>
-          <li><span class="next-item">(next item)</span></li>
+          <li>
+            <a href="#triage"><span class="next-item">(next item)</span></a>
+          </li>
         </ol>
         <p>
           If this needs to be undone, follow the
